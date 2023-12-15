@@ -3,7 +3,8 @@
 import * as http from 'http';
 import { IncomingMessage } from 'http';
 const convert = require('xml-js');
-const { OFFICE_ONLINE_SERVER: officeOnlineServer } = process.env;
+// const { OFFICE_ONLINE_SERVER: officeOnlineServer } = process.env;
+const officeOnlineServer = 'https://onenote.officeapps.live.com';
 
 export async function getProofKeys() {
   return new Promise((resolve, reject) => {

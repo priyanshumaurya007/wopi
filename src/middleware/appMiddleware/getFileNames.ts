@@ -1,7 +1,8 @@
 import { NextFunction, Request, Response } from 'express';
 import { readdir, stat } from 'fs/promises';
 import { extname, join } from 'path';
-const { WOPI_SERVER: wopiServer } = process.env;
+// const { WOPI_SERVER: wopiServer } = process.env;
+const wopiServer = "http://wopi.celitotech.io";
 
 export async function getFileNames(req: Request, res: Response, next: NextFunction): Promise<void> {
   if (!wopiServer) {

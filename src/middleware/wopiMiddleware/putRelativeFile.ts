@@ -6,7 +6,8 @@ import { extname, join } from 'path';
 import { default as isValidFilename, default as validFilename } from 'valid-filename';
 import { ICustomRequest } from '../../models';
 import { fileInfo, getWopiMethods, updateFile } from '../../utils';
-const { WOPI_SERVER: wopiServer } = process.env;
+// const { WOPI_SERVER: wopiServer } = process.env;
+const wopiServer = "http://wopi.celitotech.io";
 
 export async function putRelativeFile(req: ICustomRequest, res: Response, next: NextFunction): Promise<void> {
   if (!wopiServer) {

@@ -8,7 +8,8 @@ import { fileInfo, getWopiMethods } from '../../utils';
 
 
 export async function checkFileInfo(req: Request, res: Response, next: NextFunction): Promise<void> {
-  const { WOPI_SERVER: wopiServer } = process.env;
+  // const { WOPI_SERVER: wopiServer } = process.env;
+  const wopiServer = "http://wopi.celitotech.io";
   const { file_id: fileId } = req.params;
 
   const query = Object.entries(req.query).reduce(

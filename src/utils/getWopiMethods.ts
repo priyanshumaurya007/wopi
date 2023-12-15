@@ -3,7 +3,8 @@ import { Element, xml2js } from 'xml-js';
 
 export async function getWopiMethods(): Promise<any> {
   return new Promise((resolve, reject) => {
-    const { OFFICE_ONLINE_SERVER: officeOnlineServer } = process.env;
+    // const { OFFICE_ONLINE_SERVER: officeOnlineServer } = process.env;
+    const officeOnlineServer = 'https://onenote.officeapps.live.com';
 
     if (!officeOnlineServer) {
       throw new Error('process.env.OFFICE_ONLINE_SERVER must be defined and point to an instance of Office Online Server');
@@ -28,10 +29,11 @@ export async function getWopiMethods(): Promise<any> {
       });
 
       // the whole response has been received, so respond
+      const wopiImplemented = ['view','open','edit'];
       response.on('end', function() {
         const dataFromXml = xml2js(str, { compact: false }) as Element;
         const data: {[key: string]: [[string, string]]} = {};
-        const implemented = process.env.WOPI_IMPLEMENTED?.split(',');
+        const implemented = wopiImplemented;
 
         dataFromXml.elements?.find((el: Element) => el.name === 'wopi-discovery')
           ?.elements?.find((el: Element) => el.name === 'net-zone')
